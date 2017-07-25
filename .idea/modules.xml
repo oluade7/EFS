@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/efsblog.iml" filepath="$PROJECT_DIR$/.idea/efsblog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../efsblog-static-files-and-templates/static/.idea/static.iml" filepath="$PROJECT_DIR$/../../efsblog-static-files-and-templates/static/.idea/static.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../efsblog-static-files-and-templates/templates/.idea/templates.iml" filepath="$PROJECT_DIR$/../../efsblog-static-files-and-templates/templates/.idea/templates.iml" />
+    </modules>
+  </component>
+</project>
