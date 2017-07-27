@@ -37,6 +37,7 @@
                 <th>Category</th>
                 <th>Description</th>
                 <th>Acquired_value</th>
+                <th>Acquired_date</th>
                 <th>Recent_value</th>
                 <th>Recent_date</th>
                 <th colspan="3">Actions</th>  
@@ -50,6 +51,7 @@
                     <td>{{ investment.category }}</td>
                     <td>{{ investment.description }}</td>
                     <td>{{ investment.acquired_value }}</td>
+                    <td>{{ investment.acquired_date }}</td>
                     <td>{{ investment.recent_value }}</td>
                     <td>{{ investment.recent_date }}</td>
                     <td><a href="{% url 'portfolio:investment_edit' pk=investment.pk %}"
