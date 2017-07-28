@@ -106,18 +106,20 @@ def investment_list(request):
 
 @login_required
 def investment_new(request):
+    # customer = get_object_or_404(Customer, pk=customer_id)
     if request.method == "POST":
         form = InvestmentForm(request.POST)
         if form.is_valid():
+            # print(request.POST.get("cust_number", ""))
             investment = form.save(commit=False)
             investment.created_date = timezone.now()
             investment.save()
-            investments = Investment.objects.filter(acquired_date__lte=timezone.now())
-            return render(request, 'portfolio/investment_list.html',
-                          {'investments': investments})
+            investments = \
+Investment.objects.filter(acquired_date__lte=timezone.now())
+            return render(request, 'portfolio/investment_list.html', {'investments': investments})
     else:
-        form = InvestmentForm()
         # print("Else")
+        form = InvestmentForm()
     return render(request, 'portfolio/investment_new.html', {'form': form})
 
 
@@ -127,8 +129,7 @@ def investment_edit(request, pk):
     if request.method == "POST":
         form = InvestmentForm(request.POST, instance=investment)
         if form.is_valid():
-            investment = form.save()
-            # stock.customer = stock.id
+            investment = form.save(commit=False)
             investment.updated_date = timezone.now()
             investment.save()
             investments = Investment.objects.filter(acquired_date__lte=timezone.now())
@@ -155,6 +156,7 @@ def portfolio(request, pk):
     stocks = Stock.objects.filter(customer=pk)
     sum_acquired_value = Investment.objects.filter(customer=pk).aggregate(Sum('acquired_value'))
     sum_recent_value = Investment.objects.filter(customer=pk).aggregate(Sum('recent_value'))
+
     return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                         'stocks': stocks,
                                                         'sum_recent_value': sum_recent_value,
